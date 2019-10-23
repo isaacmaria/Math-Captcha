@@ -23,7 +23,6 @@ public static void main(String args[]){
     int max=9,min =0;
     Random rand = new Random();
     
-  
 	
 
     Button b1=new Button("ENTER");
@@ -50,10 +49,10 @@ public static void main(String args[]){
     randomNum = rand.nextInt((max - min) + 1) + min;
     num2 =randomNum;
     System.out.println(randomNum);
-    path="C:\\Users\\IsaacIvan\\Desktop\\MATH CAPTCHA\\digits\\"+randomNum+".jpg";
+    path="digits\\"+randomNum+".jpg";
     f.add(new JLabel(new ImageIcon(path)));
   
-    f.add(new JLabel(new ImageIcon("C:\\Users\\IsaacIvan\\Desktop\\MATH CAPTCHA\\operations\\5.jpg")));
+    f.add(new JLabel(new ImageIcon("operations\\5.jpg")));
   
     TextArea area=new TextArea("");  
     area.setSize(70, 70);
@@ -87,18 +86,21 @@ public static void main(String args[]){
         
         if(output==res)
         {	
-
-        	l.setText("VALIDATED");
         	f.remove(b2);
+        	f.remove(b1);
+        	l.setText("VALIDATED");
+        	f.pack();
+        	f.repaint();
         	
         }
         else
         {
 
         	l.setText("TRY AGAIN");
+        	f.pack();
+        	f.repaint();
         	
-        	
-        	
+
         }
         	
             }  
@@ -107,16 +109,18 @@ public static void main(String args[]){
     b2.addActionListener(new ActionListener(){  
         public void actionPerformed(ActionEvent e){ 
         		f.dispose();
+        		l.setText("");
         		MathCaptcha.main(null);
             }  
         }); 
     
     f.add(l);
-    l.setText("");
-    
-    f.setSize(1800,300);  
+   //l.setText("                                  ");
+
+  //  f.setSize(1800,300);  
     f.setLayout(new FlowLayout(FlowLayout.LEFT));  
     f.setVisible(true); 
+    f.pack();
     f.addWindowListener(new WindowAdapter() {
         public void windowClosing(WindowEvent we) {
             System.exit(0);
