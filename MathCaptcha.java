@@ -12,10 +12,9 @@ import javax.swing.JLabel;
 import java.util.*;
 class MathCaptcha{  
 	
-	static float output,res;
-
+	static float output=Integer.MIN_VALUE,res;
 	static Label l = new Label();
-	
+	static String errorMessage="";
 	
 	
 public static void main(String args[]){  
@@ -64,8 +63,18 @@ public static void main(String args[]){
 
     b1.addActionListener(new ActionListener(){  
         public void actionPerformed(ActionEvent e){ 
-        	
+        	try {
         	 output = Float.parseFloat(area.getText());
+        	 
+        	}
+        	catch(NumberFormatException nfe){
+        		errorMessage = "INVALID INPUT";
+        		System.out.println(nfe);
+
+        	}
+        	finally {
+        	}
+        	
         System.out.println(output);
        
         
@@ -95,8 +104,12 @@ public static void main(String args[]){
         }
         else
         {
-
-        	l.setText("TRY AGAIN");
+        	if(errorMessage.length()==0)        	
+        		l.setText("TRY AGAIN");
+        	else {
+        		l.setText(errorMessage);
+        		errorMessage="";
+        	}
         	f.pack();
         	f.repaint();
         	
