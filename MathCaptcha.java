@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import java.util.*;
 class MathCaptcha{  
 	
+	
 	static float output=Integer.MIN_VALUE,res;
 	static Label l = new Label();
 	static String errorMessage="";
@@ -89,7 +90,7 @@ public static void main(String args[]){
         
         	
         }
-        System.out.println(res);
+      //  System.out.println(res);
         
      
         
